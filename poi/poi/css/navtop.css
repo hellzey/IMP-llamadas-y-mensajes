@@ -1,0 +1,49 @@
+#nav-top {
+    width: 100%;
+    background-color: #32325c;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Cambiamos a flex-start para alinear todo a la izquierda */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#nav-top .navtop-logo {
+    text-align: center;
+    margin-right: 20px; /* Espacio entre el logo y los enlaces */
+}
+
+#nav-top .navtop-logo a {
+    display: block;
+    background-color: transparent;
+}
+
+#nav-top .navtop-logo img {
+    width: 80px;
+    height: auto;
+}
+
+#nav-top .navtop-links {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espacio entre los enlaces */
+}
+
+#nav-top .navtop-links a {
+    color: #ffffff; /* Color del texto */
+    text-decoration: none; /* Quita el subrayado */
+    font-size: 16px; /* Tamaño de la fuente */
+    padding: 20px 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+#nav-top .navtop-links a:hover {
+    background-color: #43436c; /* Color de fondo al pasar el mouse */
+}
+
