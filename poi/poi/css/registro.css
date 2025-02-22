@@ -1,3 +1,4 @@
+/* Estilos generales */
 #main-body {
     font-family: Arial, sans-serif;
     background-color: #65678c;
@@ -10,26 +11,54 @@
     height: 100vh;
 }
 
+/* Contenedor principal */
 #main-container {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #908599;
-    padding: 100px;
+    padding: 30px;
     width: 50%;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 10 10 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /* Añadido para bajar el contenedor */
 }
 
+/* Sección izquierda con el logo */
+.logo-container {
+    flex: 1; /* Ocupa la mitad del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container img {
+    width: 80%; /* Ajusta el tamaño del logo */
+    max-width: 250px; /* Máximo tamaño permitido */
+}
+
+/* Sección derecha con el formulario */
+.form-container {
+    flex: 1; /* Ocupa la otra mitad */
+    text-align: left;
+}
+
+/* Título del formulario */
 #main-heading {
     font-size: 2.5em;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: #f4f4f4;
 }
 
+/* Formulario */
 #login-form {
     display: flex;
     flex-direction: column;
+    width: 80%; /* Hace que los campos sean más angostos */
+    margin: auto;
 }
 
+/* Campo de formulario */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
@@ -49,7 +78,9 @@
     font-size: 16px;
 }
 
+/* Botón de envío */
 button {
+    width: 100%;
     padding: 10px;
     background-color: #65678c;
     color: #f4f4f4;
@@ -63,6 +94,7 @@ button {
 button:hover {
     background-color: #555;
 }
+
 /* Estilos adicionales para los nuevos campos */
 .form-group input[type="file"] {
     padding: 5px;
