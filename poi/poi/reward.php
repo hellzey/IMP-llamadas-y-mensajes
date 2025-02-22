@@ -10,8 +10,37 @@
     <?php include 'navtop.php'; ?>
     <?php include 'navleft.php'; ?>
    
-    <div class="container" id="main-container">
-        <h1 id="main-heading">Rewards</h1>
+    <div id="main-container">
+        <div class="Recompensas">
+            <h1>Recompensas</h1>
+            <div class="recompensas-container">
+                <div class="Recompensa">
+                    <img src="media/logo-reward.png" alt="Recompensa 1">
+                    <h2>Recompensa 1</h2>
+                    <p>Descripción de la recompensa 1</p>
+                    <a href="equipos.php">Ver más</a>
+                </div>
+                <div class="Recompensa">
+                    <img src="media/logo-reward.png" alt="Recompensa 1">
+                    <h2>Recompensa 1</h2>
+                    <p>Descripción de la recompensa 1</p>
+                    <a href="equipos.php">Ver más</a>
+                </div>
+                <div class="Recompensa">
+                    <img src="media/logo-reward.png" alt="Recompensa 1">
+                    <h2>Recompensa 1</h2>
+                    <p>Descripción de la recompensa 1</p>
+                    <a href="equipos.php">Ver más</a>
+                </div>
+                <div class="Recompensa">
+                    <img src="media/logo-reward.png" alt="Recompensa 1">
+                    <h2>Recompensa 1</h2>
+                    <p>Descripción de la recompensa 1</p>
+                    <a href="equipos.php">Ver más</a>
+                </div>
+                
+            </div>
+        </div>
     </div>
 </body>
 </html>
