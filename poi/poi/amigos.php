@@ -11,7 +11,32 @@
     <?php include 'navleft.php'; ?>
    
     <div class="container" id="main-container">
+        <!-- Botón para agregar un amigo -->
+        <button id="add-button" onclick="alert('Agregar nuevo amigo')">Agregar Amigo</button>
+        
         <h1 id="main-heading">Amigos</h1>
+        <ul id="friends-list">
+            <li>
+                <img src="media/user.png    " alt="Amigo1" class="friend-image">
+                Amigo1 - <span class="online">En línea</span>
+            </li>
+            <li>
+                <img src="media/user.png" alt="binchis" class="friend-image">
+                binchis - <span class="online">En línea</span>
+            </li>
+            <li>
+                <img src="media/user.png" alt="Amigo2" class="friend-image">
+                Amigo2 - <span class="offline">Desconectado</span>
+            </li>
+            <li>
+                <img src="media/user.png" alt="Amigo4" class="friend-image">
+                Amigo4 - <span class="offline">Desconectado</span>
+            </li>
+            <li>
+                <img src="media/user.png" alt="Amigo3" class="friend-image">
+                Amigo3 - <span class="online">En línea</span>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
