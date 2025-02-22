@@ -10,6 +10,13 @@
     <?php include 'navtop.php'; ?>
    
     <div class="container" id="main-container">
+    <!-- Sección izquierda con el logo -->
+    <div class="logo-container">
+        <img src="media/logo1.png" alt="Logo de la Página">
+    </div>
+
+    <!-- Sección derecha con el formulario -->
+    <div class="form-container">
         <h1 id="main-heading">Registro</h1>
         <form id="login-form">
             <div class="form-group">
@@ -43,5 +50,7 @@
             <button type="submit">Iniciar Sesión</button>
         </form>
     </div>
+</div>
+
 </body>
 </html>

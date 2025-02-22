@@ -1,0 +1,32 @@
+/* Estilos para el body con id "main-body" */
+#main-body {
+    font-family: Arial, sans-serif;
+    background-color: #65678c;
+    color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Estilos para el contenedor con id "main-container" */
+#main-container {
+    text-align: center;
+    background-color: #908599;
+    padding: 300px;
+    width: 50%;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Estilos para el h1 con id "main-heading" */
+#main-heading {
+    font-size: 2.5em;
+    margin: 0;
+    color: #555;
+}
