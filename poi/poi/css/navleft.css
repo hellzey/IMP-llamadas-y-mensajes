@@ -1,20 +1,20 @@
 /* Estilos generales de la barra de navegación */
 #nav-left {
-    width: 150px; /* Ancho de la barra */
-    height: 80vh; /* 80% de la altura de la ventana */
+    width: 150px; 
+    height: 80vh; 
     background-color: #32325c; 
     position: fixed;
-    left: -75px; /* Ocultando la mitad de la barra */
-    top: 10vh; /* Centrando verticalmente */
-    border-top-right-radius: 20px; /* Solo esquina superior derecha */
-    border-bottom-right-radius: 20px; /* Solo esquina inferior derecha */
+    left: -75px; 
+    top: 10vh; 
+    border-top-right-radius: 20px; 
+    border-bottom-right-radius: 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 20px 0;
     transition: left 0.3s ease;
-    overflow: hidden; /* Oculta contenido que sobrepase */
+    overflow: hidden; 
 }
 
 /* Muestra la barra al pasar el mouse */
@@ -28,25 +28,47 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 20px 0; /* Reducción del padding para evitar desbordes */
+    padding: 20px 0; 
 }
 
 /* Estilos de los enlaces */
 #nav-left .navleft-links a {
-    color: white; /* Mejor contraste */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Alinea el texto a la izquierda y el icono a la derecha */
+    color: white;
     text-decoration: none;
     background-color: #32325c;
     width: 90%;
-    text-align: center;
     padding: 10px;
     margin: 5px 0;
-    border-radius: 10px; /* Bordes redondeados para los botones */
+    border-radius: 10px;
     transition: background 0.3s ease;
+}
+
+/* Estilos para el texto dentro de los enlaces */
+#nav-left .navleft-links a span {
+    flex-grow: 1; /* Ocupa el espacio disponible a la izquierda */
+    text-align: left;
+    padding-left: 10px; /* Espacio para separarlo del borde izquierdo */
+}
+
+/* Estilos para los iconos dentro de los enlaces */
+#nav-left .navleft-links a img {
+    width: 60px; /* Ajusta el tamaño del icono */
+    height: 60px;
+    margin-left: 10px; /* Espacio entre el texto y el icono */
+    transition: transform 0.3s ease;
 }
 
 /* Efecto hover en enlaces */
 #nav-left .navleft-links a:hover {
     background-color: #434383;
+}
+
+/* Efecto hover en imágenes */
+#nav-left .navleft-links a:hover img {
+    transform: scale(1.1);
 }
 
 /* Estilos del perfil */
@@ -60,4 +82,59 @@
 #nav-left .navleft-profile img {
     border-radius: 50%;
     width: 50px;
+}
+
+/* Estilos para el enlace del nombre de usuario */
+#nav-left .navleft-profile a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+
+/* Efecto hover en el nombre de usuario */
+#nav-left .navleft-profile a:hover {
+    color: #ccccff;
+}
+/* Estilos del perfil, igual que los botones del menú */
+#nav-left .navleft-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Texto a la izquierda, imagen a la derecha */
+    color: white;
+    text-decoration: none;
+    background-color: #32325c;
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+/* Estilos para el nombre dentro del perfil */
+#nav-left .navleft-profile span {
+    flex-grow: 1; /* Ocupa el espacio disponible a la izquierda */
+    text-align: left;
+    padding-left: 10px; /* Separación del borde izquierdo */
+}
+
+/* Estilos para la imagen de perfil */
+#nav-left .navleft-profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 10px; /* Espacio entre el texto y la imagen */
+    transition: transform 0.3s ease;
+}
+
+/* Efecto hover en el perfil */
+#nav-left .navleft-profile:hover {
+    background-color: #434383;
+}
+
+/* Efecto hover en la imagen de perfil */
+#nav-left .navleft-profile:hover img {
+    transform: scale(1.1);
 }
