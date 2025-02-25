@@ -21,7 +21,7 @@
                 <img src="media/ado2.jpg" alt="Equipo 1">
                 <h2>Equipo 1</h2>
                 <p>Descripción del equipo 1</p>
-                <a href="equipos.php">Ver más</a>
+                <a href="intoequipos.php">Ver más</a>
             </div>
             <div class="equipo">
                 <img src="media/ado3.jpg" alt="Equipo 2">

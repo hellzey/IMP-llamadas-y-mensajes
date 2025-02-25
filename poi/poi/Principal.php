@@ -11,7 +11,7 @@
     <?php include 'navleft.php'; ?>
    
     <div class="container" id="main-container">
-        <h1 id="main-heading">Bienvenido</h1>
+        <h1 id="main-heading">Bienvenido @Usuario</h1>
     </div>
 </body>
 </html>
