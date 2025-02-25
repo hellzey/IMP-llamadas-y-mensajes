@@ -75,7 +75,7 @@
             <div class="form-group">
                 <label for="profile-photo">Foto de Perfil</label>
                 <input type="file" id="profile-photo" name="profile-photo" accept="image/*" disabled onchange="mostrarFoto(event)">
-                <img src="path/to/photo.jpg" alt="Foto de perfil" id="current-profile-photo" style="max-width: 150px; margin-top: 10px;">
+                <img src="media/user.png" alt="Foto de perfil" id="current-profile-photo" style="max-width: 150px; margin-top: 10px;">
             </div>
 
             <!-- Botón para habilitar los campos -->
