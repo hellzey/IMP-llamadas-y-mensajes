@@ -1,0 +1,86 @@
+/* Estilos para el body con id "main-body" */
+#main-body {
+    font-family: Arial, sans-serif;
+    background-color: #65678c;
+    color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Estilos para el contenedor con id "main-container" */
+#main-container {
+    text-align: center;
+    background-color: #908599;
+    padding: 20px;
+    width: 50%;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Estilo para el botón de agregar amigo */
+#add-button {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: #575b89;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-button:hover {
+    background-color: #424568;
+}
+
+/* Estilos para el h1 con id "main-heading" */
+#main-heading {
+    font-size: 2.5em;
+    margin: 0;
+    color: #ffffff;
+}
+
+/* Estilos para la lista de amigos */
+#friends-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilos para cada elemento de la lista de amigos */
+#friends-list li {
+    background-color: #716779;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    
+}
+
+/* Estilo para la imagen de cada amigo */
+.friend-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Estilo para los amigos en línea */
+.online {
+    color: rgb(25, 219, 25);
+}
+
+/* Estilo para los amigos desconectados */
+.offline {
+    color: rgb(255, 0, 0);
+}

@@ -16,11 +16,11 @@
     text-align: center;
     background-color: #908599;
     padding: 40px;
-    width: 60%;
+    width: 50%;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -93,4 +93,24 @@
 
 .equipo a:hover {
     background-color: #47436d;
+}
+/* Botón de crear equipo */
+.crear-equipo-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #32325c; /* Verde llamativo */
+    color: white;
+    padding: 10px 15px;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Efecto hover */
+.crear-equipo-btn:hover {
+    background-color: #242442;
+    transform: scale(1.05);
 }
