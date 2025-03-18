@@ -17,7 +17,7 @@
         <h1 id="main-heading">Amigos</h1>
         <ul id="friends-list">
             <li>
-                <img src="media/user.png    " alt="Amigo1" class="friend-image">
+                <img src="media/user.png" alt="Amigo1" class="friend-image">
                 Amigo1 - <span class="online">En línea</span>
             </li>
             <li>
