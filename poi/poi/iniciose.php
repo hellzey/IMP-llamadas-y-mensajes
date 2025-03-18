@@ -11,7 +11,8 @@
    
     <div class="container" id="main-container">
         <h1 id="main-heading">Iniciar Sesión</h1>
-        <form id="login-form">
+        
+        <form id="login-form" method="POST" action="./back-end/login.php">
             <div class="form-group">
                 <label for="email">Correo Electrónico</label>
                 <input type="email" id="email" name="email" required>

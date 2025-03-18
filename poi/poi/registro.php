@@ -15,10 +15,10 @@
         <img src="media/logo1.png" alt="Logo de la Página">
     </div>
 
-    <!-- Sección derecha con el formulario -->
+    <!-- Sección derecha con el formulario -->  
     <div class="form-container">
         <h1 id="main-heading">Registro</h1>
-        <form id="login-form">
+        <form id="login-form" action=".\back-end\registro.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="email">Correo Electrónico</label>
                 <input type="email" id="email" name="email" required>
@@ -43,11 +43,7 @@
                 <label for="profile-photo">Foto de Perfil</label>
                 <input type="file" id="profile-photo" name="profile-photo" accept="image/*">
             </div>
-            <div class="form-group">
-                <label for="profession">Profesión</label>
-                <input type="text" id="profession" name="profession" required>
-            </div>
-            <button type="submit">Iniciar Sesión</button>
+            <button type="submit">registrarse</button>
         </form>
     </div>
 </div>

@@ -1,5 +1,23 @@
+<?php
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: login.php"); // Redirigir si no está logueado
+    exit();
+}
+
+// Obtener los datos del usuario desde la sesión
+$id_usuario = $_SESSION['id_usuario'];
+$nombre = $_SESSION['nombre'] ?? '';
+$username = $_SESSION['username'] ?? '';
+$correo = $_SESSION['correo'] ?? ''; 
+$foto_perfil = $_SESSION['foto_perfil'] ?? '';
+$fecha_nacimiento = $_SESSION['fecha_nacimiento'] ?? '';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +25,9 @@
     <title>Perfil de Usuario</title>
     <script>
         function habilitarCampos() {
-            // Habilitar los campos del formulario
             document.getElementById("username").disabled = false;
             document.getElementById("full-name").disabled = false;
             document.getElementById("birthdate").disabled = false;
-            document.getElementById("profession").disabled = false;
             document.getElementById("profile-photo").disabled = false;
         }
 
@@ -30,7 +46,6 @@
 
         function guardarCambios(event) {
             event.preventDefault();
-            // Aquí puedes agregar lógica para guardar los cambios, por ejemplo, enviarlos a un servidor.
             alert('Cambios guardados correctamente');
         }
     </script>
@@ -41,41 +56,36 @@
     <div class="container" id="main-container">
         <h1 id="main-heading">Mi Perfil</h1>
         <form id="profile-form" enctype="multipart/form-data" onsubmit="guardarCambios(event)">
-            <!-- Campo de correo electrónico (solo lectura) -->
+            <!-- Campo de correo electrónico -->
             <div class="form-group">
                 <label for="email">Correo Electrónico</label>
-                <input type="email" id="email" name="email" value="user@example.com" disabled>
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($correo); ?>" disabled>
             </div>
             
             <!-- Campo de nombre de usuario -->
             <div class="form-group">
                 <label for="username">Nombre de Usuario</label>
-                <input type="text" id="username" name="username" value="usuario123" disabled required>
+                <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" disabled required>
             </div>
             
             <!-- Campo de nombre completo -->
             <div class="form-group">
                 <label for="full-name">Nombre Completo</label>
-                <input type="text" id="full-name" name="full-name" value="Juan Pérez" disabled required>
+                <input type="text" id="full-name" name="full-name" value="<?php echo htmlspecialchars($nombre); ?>" disabled required>
             </div>
             
             <!-- Campo de fecha de nacimiento -->
             <div class="form-group">
                 <label for="birthdate">Fecha de Nacimiento</label>
-                <input type="date" id="birthdate" name="birthdate" value="1990-05-15" disabled required>
-            </div>
-            
-            <!-- Campo de profesión -->
-            <div class="form-group">
-                <label for="profession">Profesión</label>
-                <input type="text" id="profession" name="profession" value="Desarrollador Web" disabled required>
+                <input type="date" id="birthdate" name="birthdate" value="<?php echo htmlspecialchars($fecha_nacimiento); ?>" disabled required>
             </div>
             
             <!-- Campo de foto de perfil -->
             <div class="form-group">
                 <label for="profile-photo">Foto de Perfil</label>
                 <input type="file" id="profile-photo" name="profile-photo" accept="image/*" disabled onchange="mostrarFoto(event)">
-                <img src="media/user.png" alt="Foto de perfil" id="current-profile-photo" style="max-width: 150px; margin-top: 10px;">
+                <img src="<?php echo !empty($foto_perfil) ? 'data:image/jpeg;base64,' . base64_encode($foto_perfil) : 'media/user.png'; ?>" 
+                     alt="Foto de perfil" id="current-profile-photo" style="max-width: 150px; margin-top: 10px;">
             </div>
 
             <!-- Botón para habilitar los campos -->
