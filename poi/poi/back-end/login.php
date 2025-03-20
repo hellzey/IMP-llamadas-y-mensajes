@@ -32,7 +32,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $_SESSION['id_usuario'] = $row['id_usuario'];
             $_SESSION['nombre'] = $row['nombre'];
             $_SESSION['correo'] = $row['correo'];
-            $_SESSION['foto_perfil'] = $row['foto_perfil'];
+            $_SESSION['foto_perfil'] = !empty($row['foto_perfil']) ? base64_encode($row['foto_perfil']) : null;
+
             $_SESSION['username'] = $row['username'];
             $_SESSION['fecha_nacimiento'] = $row['fecha_nacimiento'];
 

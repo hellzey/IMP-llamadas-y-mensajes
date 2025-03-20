@@ -20,14 +20,12 @@ if (session_status() == PHP_SESSION_NONE) {
 
         <!-- Perfil del usuario con el mismo diseño de botón -->
         <a href="perfil.php" class="navleft-profile">
-            <span><?php echo $_SESSION['username']; ?></span>
+            <span><?php echo htmlspecialchars($_SESSION['username']); ?></span>
             <?php if (!empty($_SESSION['foto_perfil'])): ?>
-                <img src="data:image/jpeg;base64,<?php echo base64_encode($_SESSION['foto_perfil']); ?>" alt="User Profile">
+                <img src="data:image/jpeg;base64,<?php echo $_SESSION['foto_perfil']; ?>" alt="User Profile">
             <?php else: ?>
                 <img src="media/user.png" alt="User Profile">
             <?php endif; ?>
         </a>
     </nav>
-<?php else: ?>
-
 <?php endif; ?>
