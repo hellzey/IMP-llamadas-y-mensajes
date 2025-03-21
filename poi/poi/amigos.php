@@ -11,8 +11,9 @@
     <?php include 'navleft.php'; ?>
    
     <div class="container" id="main-container">
+        <button id="add-button" onclick="openModal()">Agregar Amigo</button>
+        <button id="requests-button" onclick="openRequestsModal()">Solicitudes de Amigos</button>
 
-        <button id="add-button" onclick="alert('Agregar nuevo amigo')">Agregar Amigo</button>
         
         <h1 id="main-heading">Amigos</h1>
         <ul id="friends-list">
@@ -38,5 +39,29 @@
             </li>
         </ul>
     </div>
+
+
+<div id="friend-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>Agregar Nuevo Amigo</h2>
+        <input type="text" id="friend-name" placeholder="Nombre del amigo">
+        <button onclick="addFriend()">Agregar</button>
+    </div>
+</div>
+
+
+<div id="requests-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeRequestsModal()">&times;</span>
+        <h2>Solicitudes de Amistad</h2>
+        <ul id="requests-list">
+        </ul>
+    </div>
+</div>
+
+
+
+    <script src="js/amigos.js"></script>
 </body>
 </html>
