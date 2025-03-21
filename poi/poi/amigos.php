@@ -11,7 +11,7 @@
     <?php include 'navleft.php'; ?>
    
     <div class="container" id="main-container">
-        <!-- Botón para agregar un amigo -->
+
         <button id="add-button" onclick="alert('Agregar nuevo amigo')">Agregar Amigo</button>
         
         <h1 id="main-heading">Amigos</h1>
