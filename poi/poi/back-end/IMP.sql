@@ -9,6 +9,17 @@ CREATE TABLE usuarios (
   puntos INT DEFAULT 0
 );
 
+CREATE TABLE Amistades (
+  id_amistad INT PRIMARY KEY AUTO_INCREMENT,
+  id_remitente INT NOT NULL,
+  id_receptor INT NOT NULL, 
+  estado ENUM('pendiente', 'aceptada', 'rechazada') DEFAULT 'pendiente',
+  aceptada TINYINT(1) DEFAULT 0,
+  FOREIGN KEY (id_remitente) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+  FOREIGN KEY (id_receptor) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
+
+
 CREATE TABLE grupos (
   id_grupo INT PRIMARY KEY AUTO_INCREMENT,
   nombre_grupo VARCHAR(100) NOT NULL,

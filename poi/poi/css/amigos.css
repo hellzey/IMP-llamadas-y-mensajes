@@ -84,95 +84,72 @@
 .offline {
     color: rgb(255, 0, 0);
 }
-/* Estilos para el modal */
+
+
+
+
+
 /* Estilos para el modal */
 .modal {
-    display: none; 
+    display: none; /* Inicialmente oculto */
     position: fixed;
-    z-index: 10;
+    z-index: 1; /* Asegura que el modal esté encima de todo */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
 }
 
-
-/* Contenedor del modal */
+/* Contenido del modal */
 .modal-content {
     background-color: #908599;
+    margin: 15% auto;
     padding: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
+    width: 50%;
+    color: white;
     text-align: center;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Botón para cerrar el modal */
+/* Botón de cierre */
 .close-btn {
+    color: white;
     float: right;
-    font-size: 20px;
+    font-size: 30px;
+    font-weight: bold;
     cursor: pointer;
-    color: #ffffff;
 }
 
-.close-btn:hover {
-    color: red;
+.close-btn:hover,
+.close-btn:focus {
+    color: #ddd;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-/* Estilos para el input */
-.modal-content input {
-    width: 80%;
-    padding: 8px;
+/* Estilo del campo de texto */
+#friend-username {
+    padding: 10px;
     margin: 10px 0;
-    border: none;
+    width: 100%;
     border-radius: 5px;
-    text-align: center;
+    border: none;
+    font-size: 1em;
+    background-color: #e1e1e1;
 }
 
-/* Botón dentro del modal */
+/* Estilo del botón dentro del modal */
 .modal-content button {
+    padding: 10px 15px;
     background-color: #575b89;
     color: white;
     border: none;
-    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .modal-content button:hover {
     background-color: #424568;
-}
-
-
-
-/* Botón de solicitudes de amistad */
-#requests-button {
-    position: absolute;
-    top: 30px;
-    left: 160px; 
-    padding: 10px 15px;
-    font-size: 1em;
-    background-color: #575b89;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#requests-button:hover {
-    background-color: #424568;
-}
-
-
-#requests-modal .modal-content {
-    background-color: #908599;
-    padding: 50px;
-    border-radius: 50px;
-    text-align: center;
-    width: 600px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
