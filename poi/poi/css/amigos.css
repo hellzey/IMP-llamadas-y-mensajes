@@ -153,3 +153,118 @@
 .modal-content button:hover {
     background-color: #424568;
 }
+
+
+
+/* Estilos para el modal de solicitudes de amistad */
+#requests-modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 2; /* Encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+}
+
+/* Contenido del modal de solicitudes */
+.requests-modal-content {
+    background-color: #908599;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    color: white;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de cierre para el modal de solicitudes */
+.requests-close-btn {
+    color: white;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.requests-close-btn:hover,
+.requests-close-btn:focus {
+    color: #ddd;
+    text-decoration: none;
+}
+
+/* Estilos para la lista de solicitudes */
+#requests-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilos para cada solicitud */
+#requests-list li {
+    background-color: #716779;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Imagen de perfil en la lista de solicitudes */
+.request-friend-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* Botones dentro del modal de solicitudes */
+.request-action-btn {
+    padding: 8px 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* Botón de aceptar solicitud */
+.accept-btn {
+    background-color: #27ae60; /* Verde */
+    color: white;
+}
+
+.accept-btn:hover {
+    background-color: #1e8449;
+}
+
+/* Botón de rechazar solicitud */
+.reject-btn {
+    background-color: #c0392b; /* Rojo */
+    color: white;
+}
+
+.reject-btn:hover {
+    background-color: #922b21;
+}
+/* Estilos para el botón de solicitudes de amistad */
+#requests-button {
+    position: absolute;
+    top: 30px;
+    left: 800px; /* Ajusta la posición en relación con el botón de agregar amigo */
+    padding: 10px 15px;
+    font-size: 1em;
+    background-color: #575b89;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#requests-button:hover {
+    background-color: #424568;
+}

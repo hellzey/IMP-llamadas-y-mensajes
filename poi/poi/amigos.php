@@ -46,9 +46,6 @@ $result = $stmt->get_result();
             <?php } ?>
         </ul>
     </div>
-
-
-
 <div id="add-friend-modal" class="modal" style="display: none;">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -57,6 +54,26 @@ $result = $stmt->get_result();
         <button onclick="addFriend()">Agregar</button>
     </div>
 </div>
+
+
+
+
     <script src="js/agregar_amigos.js"></script>
+
+    <div id="requests-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeRequestsModal()">&times;</span>
+        <h2>Solicitudes de Amistad</h2>
+        <ul id="requests-list">
+            <!-- Aquí se cargarán las solicitudes de amistad dinámicamente -->
+        </ul>
+    </div>
+</div>
+
+<script src="js/solicitudes_amigos.js"></script>
+
+
+
+
 </body>
 </html>
