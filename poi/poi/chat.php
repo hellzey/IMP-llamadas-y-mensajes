@@ -1,5 +1,26 @@
+<?php
+include 'back-end/conex.php';
+session_start();
+
+$id_usuario = $_SESSION['id_usuario'];
+
+$query = "
+    SELECT u.id_usuario, u.nombre 
+    FROM usuarios u
+    JOIN Amistades a ON (a.id_remitente = u.id_usuario OR a.id_receptor = u.id_usuario)
+    WHERE (a.id_remitente = ? OR a.id_receptor = ?)
+    AND a.estado = 'aceptada'
+    AND u.id_usuario != ?";
+
+$stmt = $conexion->prepare($query);
+$stmt->bind_param("iii", $id_usuario, $id_usuario, $id_usuario);
+$stmt->execute();
+$result = $stmt->get_result();
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,25 +32,22 @@
     <?php include 'navtop.php'; ?>
     <?php include 'navleft.php'; ?>
 
-    <!-- Contenedor principal -->
     <div id="main-container">
 
-        <!-- Lista de chats -->
+  
         <div id="chat-list">
-            <div class="chat-item" onclick="selectChat('Profe equis')">Profe equis</div>
-            <div class="chat-item" onclick="selectChat('Jose')">Jose</div>
-            <div class="chat-item" onclick="selectChat('Manuel')">Manuel</div>
-            <div class="chat-item" onclick="selectChat('Dario')">Dario</div>
+            <?php while ($row = $result->fetch_assoc()) { ?>
+                <div class="chat-item" onclick="selectChat(<?php echo $row['id_usuario']; ?>, '<?php echo htmlspecialchars($row['nombre']); ?>')">
+                    <?php echo htmlspecialchars($row['nombre']); ?>
+                </div>
+            <?php } ?>
         </div>
 
-        <!-- Contenedor del chat -->
+
         <div id="chat-box">
             <h2 id="chat-title">Selecciona un chat</h2>
             <div id="messages">
-                <!-- Mensajes se actualizarán dinámicamente aquí -->
             </div>
-
-            <!-- Input para escribir mensajes -->
             <div id="message-input">
                 <input type="text" id="message-text" placeholder="Escribe un mensaje...">
                 <button onclick="sendMessage()">▶</button>
@@ -38,32 +56,7 @@
 
     </div>
 
-    <script>
-        let currentChat = "";
-
-        function selectChat(user) {
-            currentChat = user;
-            document.getElementById("chat-title").innerText = "Chat con " + user;
-            document.getElementById("messages").innerHTML = ""; // Limpia mensajes anteriores
-        }
-
-        function sendMessage() {
-            if (!currentChat) {
-                alert("Selecciona un chat primero.");
-                return;
-            }
-
-            let messageText = document.getElementById("message-text").value;
-            if (messageText.trim() === "") return;
-
-            let messageDiv = document.createElement("div");
-            messageDiv.classList.add("message", "sent");
-            messageDiv.textContent = messageText;
-
-            document.getElementById("messages").appendChild(messageDiv);
-            document.getElementById("message-text").value = "";
-        }
-    </script>
+    <script src="js/chat.js"></script>
 
 </body>
 </html>
