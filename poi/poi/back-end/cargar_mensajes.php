@@ -2,6 +2,8 @@
 include 'conex.php';
 session_start();
 
+header("Content-Type: application/json"); // Asegurarnos de que la respuesta sea JSON
+
 $id_usuario = $_SESSION['id_usuario'];
 $friend_id = $_GET['friend_id'];
 
@@ -24,5 +26,5 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-echo json_encode($messages);
+echo json_encode($messages); // Devolver los mensajes como JSON
 ?>
