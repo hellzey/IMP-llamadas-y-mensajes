@@ -6,7 +6,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Escapar las entradas para evitar inyecciones SQL
+   
     $email = $conexion->real_escape_string($email);
     
     // Preparar la consulta

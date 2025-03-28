@@ -2,7 +2,7 @@
 include 'conex.php';
 session_start();
 
-header("Content-Type: application/json"); // Asegurarnos de que la respuesta sea JSON
+header("Content-Type: application/json"); 
 
 $response = ["status" => "error", "message" => "Mensaje no enviado"];
 

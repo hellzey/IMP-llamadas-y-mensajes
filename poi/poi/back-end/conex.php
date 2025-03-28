@@ -4,7 +4,7 @@ $usuario = "root";
 $clave = ""; 
 $base_datos = "imp"; 
 
-// Crear la conexión
+
 $conexion = new mysqli($servidor, $usuario, $clave, $base_datos);
 
 if ($conexion->connect_error) {

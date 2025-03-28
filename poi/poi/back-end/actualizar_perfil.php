@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = trim($_POST['username']);
     $fecha_nacimiento = $_POST['birthdate'];
     
-    // Verificar si los datos han cambiado
+
     $stmt_check = $conexion->prepare("SELECT nombre, username, fecha_nacimiento, foto_perfil FROM usuarios WHERE id_usuario = ?");
     $stmt_check->bind_param("i", $id_usuario);
     $stmt_check->execute();
@@ -21,19 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt_check->fetch();
     $stmt_check->close();
     
-    // Manejo de la foto de perfil
-    $foto = $foto_actual; // Mantener la foto actual por defecto
+
+    $foto = $foto_actual; 
     if (!empty($_FILES['profile-photo']['tmp_name'])) {
         $foto = file_get_contents($_FILES['profile-photo']['tmp_name']);
     }
 
-    // Verificar si hay cambios antes de actualizar
+ 
     if ($nombre === $nombre_actual && $username === $username_actual && $fecha_nacimiento === $fecha_nacimiento_actual && $foto === $foto_actual) {
         echo "No hay cambios para actualizar.";
         exit();
     }
 
-    // Preparar la consulta de actualización
     $stmt = $conexion->prepare("UPDATE usuarios SET nombre = ?, username = ?, fecha_nacimiento = ?, foto_perfil = ? WHERE id_usuario = ?");
     $stmt->bind_param("ssssi", $nombre, $username, $fecha_nacimiento, $foto, $id_usuario);
     
