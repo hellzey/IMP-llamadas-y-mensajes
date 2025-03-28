@@ -1,15 +1,15 @@
-// Función para abrir el modal de solicitudes de amistad
+
 function openRequestsModal() {
     document.getElementById("requests-modal").style.display = "block";
-    loadFriendRequests(); // Cargar las solicitudes al abrir el modal
+    loadFriendRequests(); 
 }
 
-// Función para cerrar el modal de solicitudes de amistad
+
 function closeRequestsModal() {
     document.getElementById("requests-modal").style.display = "none";
 }
 
-// Función para cargar las solicitudes de amistad
+
 function loadFriendRequests() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "back-end/obtener_solicitudes.php", true);
@@ -21,7 +21,6 @@ function loadFriendRequests() {
     xhr.send();
 }
 
-// Función para aceptar o rechazar una solicitud de amistad
 function manageFriendRequest(id_amistad, action) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "back-end/gestionar_solicitud.php", true);
@@ -30,7 +29,7 @@ function manageFriendRequest(id_amistad, action) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             alert(xhr.responseText);
-            loadFriendRequests(); // Recargar la lista de solicitudes después de la acción
+            loadFriendRequests(); 
         }
     };
 
