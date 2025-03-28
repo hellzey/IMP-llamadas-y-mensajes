@@ -10,12 +10,12 @@
     <?php include 'navtop.php'; ?>
    
     <div class="container" id="main-container">
-    <!-- Sección izquierda con el logo -->
+
     <div class="logo-container">
         <img src="media/logo1.png" alt="Logo de la Página">
     </div>
 
-    <!-- Sección derecha con el formulario -->  
+  
     <div class="form-container">
         <h1 id="main-heading">Registro</h1>
         <form id="login-form" action=".\back-end\registro.php" method="POST" enctype="multipart/form-data">

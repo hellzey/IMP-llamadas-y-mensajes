@@ -65,7 +65,7 @@ $result = $stmt->get_result();
         <span class="close-btn" onclick="closeRequestsModal()">&times;</span>
         <h2>Solicitudes de Amistad</h2>
         <ul id="requests-list">
-            <!-- Aquí se cargarán las solicitudes de amistad dinámicamente -->
+         
         </ul>
     </div>
 </div>

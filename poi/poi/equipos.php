@@ -11,7 +11,7 @@
     <?php include 'navleft.php'; ?>
    
     <div id="main-container">
-    <!-- Botón para crear equipo -->
+
     <a href="crear_equipo.php" class="crear-equipo-btn">+ Crear un equipo</a>
     
     <div class="equipos">
