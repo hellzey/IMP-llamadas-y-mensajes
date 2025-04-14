@@ -1,76 +1,130 @@
+/* Estilos generales */
 #main-body {
     font-family: Arial, sans-serif;
     background-color: #65678c;
     color: #f4f4f4;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
 }
 
 /* Contenedor principal */
 #main-container {
-    display: flex;
-    height: 60vh;
-    width: 70%;
     background-color: #908599;
-    border-radius: 10px;
+    padding: 40px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 150px auto;
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    
+    flex-wrap: nowrap; /* ⛔ NO permitir que se apilen a menos que sea en móvil */
 }
 
-/* Barra lateral de canales */
-#sidebar {
-    width: 15%;
-    background-color: #847a8d;
+/* Sección izquierda */
+#left-section {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    background-color: #7c718a;
     padding: 20px;
-    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-#sidebar h2 {
-    margin: 0 0 7px;
+/* Sección derecha */
+#right-section {
+    flex: 2;
+    background-color: #7c718a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos dentro de secciones */
+#left-section h3,
+#right-section h3 {
     font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
 }
 
-#sidebar ul {
-    list-style: none;
+/* Formularios y botones */
+form {
+    margin-bottom: 20px;
+}
+
+select,
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+}
+
+button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Listas de miembros y canales */
+ul {
+    list-style-type: none;
     padding: 0;
 }
 
-#sidebar ul li {
+li {
+    background-color: #f0f0f0;
     padding: 10px;
-    cursor: pointer;
-    background-color: #65678c;
-    margin-bottom: 5px;
+    margin: 5px 0;
     border-radius: 5px;
-}
-
-#sidebar ul li:hover {
-    background-color: #5c5d7e;
-}
-
-    /* Sección de publicaciones */
-    #content {
-    width: 90%;
-    padding: 40px;
-  
-    box-sizing: border-box;
-}
-
-#content h2 {
-    margin: 0 0 10px;
-    font-size: 1.5em;
-}
-
-#posts {
-    background-color: #cac9c9;
+    font-size: 1.1em;
     color: #333;
+}
+
+/* Estilo de publicaciones */
+#posts {
+    background-color: #fafafa;
     padding: 20px;
-    border-radius: 10px;
-    min-height: 300px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    color: #333;
+    margin-top: 20px;
+}
+
+#posts p {
+    color: #666;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    #main-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #left-section,
+    #right-section {
+        width: 100%;
+        max-width: 100%;
+    }
 }

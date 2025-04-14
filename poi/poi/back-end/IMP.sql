@@ -81,3 +81,15 @@ CREATE TABLE publicaciones (
 
 
 ALTER TABLE usuarios ADD COLUMN username VARCHAR(50) NOT NULL UNIQUE;
+
+ALTER TABLE grupos
+ADD foto_grupo MEDIUMBLOB;
+
+
+CREATE TABLE canales (
+    id_canal INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_canal VARCHAR(100) NOT NULL,
+    id_grupo INT NOT NULL,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_grupo) REFERENCES grupos(id_grupo) ON DELETE CASCADE
+);

@@ -1,9 +1,26 @@
 <?php
-include 'back-end/conex.php';
 session_start();
+include 'back-end/conex.php';
 
-$query = "SELECT id_grupo, nombre_grupo, foto_grupo FROM grupos";
-$resultado = $conexion->query($query);
+// Verificar si el usuario está logueado
+if (!isset($_SESSION['id_usuario'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$id_usuario = $_SESSION['id_usuario'];
+
+// Obtener solo los grupos donde el usuario es el maestro o es miembro
+$query = "
+    SELECT DISTINCT g.id_grupo, g.nombre_grupo, g.foto_grupo 
+    FROM grupos g
+    LEFT JOIN miembros m ON g.id_grupo = m.id_grupo
+    WHERE g.id_maestro = ? OR m.id_usuario = ?
+";
+$stmt = $conexion->prepare($query);
+$stmt->bind_param("ii", $id_usuario, $id_usuario);
+$stmt->execute();
+$resultado = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +46,12 @@ $resultado = $conexion->query($query);
                     <?php if (!empty($equipo['foto_grupo'])): ?>
                         <img src="data:image/jpeg;base64,<?php echo base64_encode($equipo['foto_grupo']); ?>" alt="Imagen del equipo">
                     <?php else: ?>
-                        <img src="media/placeholder.jpg" alt="Sin imagen"> <!-- Imagen por defecto -->
+                        <img src="media/ado1.jpg" alt="Sin imagen">
                     <?php endif; ?>
-                    
+
                     <h2><?php echo htmlspecialchars($equipo['nombre_grupo']); ?></h2>
-                    <p>Grupo ID: <?php echo $equipo['id_grupo']; ?></p> <!-- Puedes reemplazar esto con una descripción real -->
-                    <a href="intoequipos.php?id=<?php echo $equipo['id_grupo']; ?>">Ver más</a>
+                    <p>Grupo ID: <?php echo $equipo['id_grupo']; ?></p>
+                    <a href="intoequipos.php?id_grupo=<?php echo $equipo['id_grupo']; ?>">Ver más</a>
                 </div>
             <?php endwhile; ?>
         </div>
