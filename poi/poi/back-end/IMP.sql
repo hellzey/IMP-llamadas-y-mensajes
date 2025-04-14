@@ -97,3 +97,6 @@ CREATE TABLE canales (
 ALTER TABLE publicaciones
 ADD COLUMN id_canal INT NOT NULL,
 ADD FOREIGN KEY (id_canal) REFERENCES canales(id_canal) ON DELETE CASCADE;
+
+ALTER TABLE usuarios ADD COLUMN ultima_actividad DATETIME DEFAULT CURRENT_TIMESTAMP;
+

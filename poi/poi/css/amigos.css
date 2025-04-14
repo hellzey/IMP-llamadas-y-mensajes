@@ -268,3 +268,14 @@
 #requests-button:hover {
     background-color: #424568;
 }
+
+
+.online {
+    color: #4CAF50; /* Verde */
+    font-weight: bold;
+}
+
+.offline {
+    color: #f44336; /* Rojo */
+    font-weight: bold;
+}
