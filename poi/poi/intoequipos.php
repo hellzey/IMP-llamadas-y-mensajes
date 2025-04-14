@@ -2,14 +2,28 @@
 session_start();
 include 'back-end/conex.php';
 
-// Verificar si se recibió el id_grupo por GET
 if (!isset($_GET['id_grupo'])) {
     die("ID de grupo no especificado.");
 }
 
 $id_grupo = $_GET['id_grupo'];
 
-// Obtener la información del grupo usando el ID
+// Agregar publicación
+if (isset($_POST['publicar'])) {
+    $id_usuario = $_SESSION['id_usuario'];
+    $mensaje = $_POST['mensaje'];
+    $id_canal = $_POST['id_canal'];
+
+    $query_publicar = "INSERT INTO publicaciones (id_usuario, mensaje, id_grupo, id_canal) VALUES (?, ?, ?, ?)";
+    $stmt_publicar = $conexion->prepare($query_publicar);
+    $stmt_publicar->bind_param("isii", $id_usuario, $mensaje, $id_grupo, $id_canal);
+    $stmt_publicar->execute();
+
+    header("Location: intoequipos.php?id_grupo=$id_grupo&id_canal=$id_canal");
+    exit();
+}
+
+// Info del grupo
 $query = "SELECT * FROM grupos WHERE id_grupo = ?";
 $stmt = $conexion->prepare($query);
 $stmt->bind_param("i", $id_grupo);
@@ -17,14 +31,14 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 $grupo = $resultado->fetch_assoc();
 
-// Obtener los canales del grupo
+// Canales
 $query_canales = "SELECT * FROM canales WHERE id_grupo = ?";
 $stmt_canales = $conexion->prepare($query_canales);
 $stmt_canales->bind_param("i", $id_grupo);
 $stmt_canales->execute();
 $resultado_canales = $stmt_canales->get_result();
 
-// Obtener miembros actuales del grupo
+// Miembros
 $query_miembros = "SELECT u.id_usuario, u.nombre FROM usuarios u 
                    JOIN miembros m ON u.id_usuario = m.id_usuario 
                    WHERE m.id_grupo = ?";
@@ -46,7 +60,7 @@ $resultado_miembros = $stmt_miembros->get_result();
     <?php include 'navleft.php'; ?>
 
     <div class="container" id="main-container">
-        <!-- Lado izquierdo: Agregar Miembros y Canales -->
+        <!-- Lado izquierdo -->
         <div id="left-section">
             <h3>Agregar Miembro</h3>
             <form action="back-end/procesar_equipo.php" method="POST">
@@ -64,9 +78,9 @@ $resultado_miembros = $stmt_miembros->get_result();
             </form>
         </div>
 
-        <!-- Lado derecho (Centro y Derecho): Canales y Publicaciones -->
+        <!-- Lado derecho -->
         <div id="right-section">
-            <!-- Miembros del grupo -->
+            <!-- Miembros -->
             <div id="miembros">
                 <h3>Miembros del grupo</h3>
                 <ul>
@@ -76,35 +90,70 @@ $resultado_miembros = $stmt_miembros->get_result();
                 </ul>
             </div>
 
-            <!-- Canales del grupo -->
+            <!-- Canales como botones -->
             <div id="canales">
                 <h3>Canales</h3>
-                <ul>
+                <?php
+                $stmt_canales->execute(); // reiniciar resultado
+                $resultado_canales = $stmt_canales->get_result();
+                ?>
+                <form method="GET" action="intoequipos.php">
+                    <input type="hidden" name="id_grupo" value="<?php echo $id_grupo; ?>">
                     <?php while ($canal = $resultado_canales->fetch_assoc()): ?>
-                        <li><?php echo htmlspecialchars($canal['nombre_canal']); ?></li>
+                        <button type="submit" name="id_canal" value="<?php echo $canal['id_canal']; ?>">
+                            <?php echo htmlspecialchars($canal['nombre_canal']); ?>
+                        </button>
                     <?php endwhile; ?>
-                </ul>
+                </form>
             </div>
 
             <!-- Publicaciones -->
             <div id="content">
                 <h2>Publicaciones</h2>
-                <div id="posts">
-                    <p>Selecciona un canal para ver publicaciones.</p>
-                </div>
+                <?php
+                $id_canal_seleccionado = isset($_GET['id_canal']) ? $_GET['id_canal'] : null;
+                if ($id_canal_seleccionado):
+                ?>
+                    <!-- Formulario para publicar -->
+                    <form action="intoequipos.php?id_grupo=<?php echo $id_grupo; ?>&id_canal=<?php echo $id_canal_seleccionado; ?>" method="POST">
+                        <textarea name="mensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+                        <input type="hidden" name="id_canal" value="<?php echo $id_canal_seleccionado; ?>">
+                        <button type="submit" name="publicar">Publicar</button>
+                    </form>
+
+                    <!-- Mostrar publicaciones -->
+                    <div id="posts">
+                        <?php
+                        $query_publicaciones = "SELECT p.mensaje, p.fecha_envio, u.nombre AS usuario 
+                                                FROM publicaciones p
+                                                JOIN usuarios u ON p.id_usuario = u.id_usuario
+                                                WHERE p.id_grupo = ? AND p.id_canal = ?
+                                                ORDER BY p.fecha_envio DESC";
+                        $stmt_publicaciones = $conexion->prepare($query_publicaciones);
+                        $stmt_publicaciones->bind_param("ii", $id_grupo, $id_canal_seleccionado);
+                        $stmt_publicaciones->execute();
+                        $resultado_publicaciones = $stmt_publicaciones->get_result();
+
+                        if ($resultado_publicaciones->num_rows > 0):
+                            while ($publicacion = $resultado_publicaciones->fetch_assoc()):
+                        ?>
+                                <div class="post">
+                                    <strong><?php echo htmlspecialchars($publicacion['usuario']); ?>:</strong>
+                                    <p><?php echo htmlspecialchars($publicacion['mensaje']); ?></p>
+                                    <small><?php echo $publicacion['fecha_envio']; ?></small>
+                                </div>
+                        <?php
+                            endwhile;
+                        else:
+                            echo "<p>No hay publicaciones en este canal.</p>";
+                        endif;
+                        ?>
+                    </div>
+                <?php else: ?>
+                    <p>Selecciona un canal para ver sus publicaciones y publicar mensajes.</p>
+                <?php endif; ?>
             </div>
         </div>
     </div>
-
-    <script>
-        function showPosts(channel) {
-            let posts = {
-                'general': '<p>Bienvenidos al canal General.</p>',
-                'random': '<p>Publicaciones Random aquí.</p>',
-                'noticias': '<p>Últimas noticias en este canal.</p>'
-            };
-            document.getElementById('posts').innerHTML = posts[channel] || '<p>No hay publicaciones.</p>';
-        }
-    </script>
 </body>
 </html>

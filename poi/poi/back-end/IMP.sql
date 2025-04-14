@@ -93,3 +93,7 @@ CREATE TABLE canales (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_grupo) REFERENCES grupos(id_grupo) ON DELETE CASCADE
 );
+
+ALTER TABLE publicaciones
+ADD COLUMN id_canal INT NOT NULL,
+ADD FOREIGN KEY (id_canal) REFERENCES canales(id_canal) ON DELETE CASCADE;
