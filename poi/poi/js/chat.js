@@ -68,3 +68,12 @@ function sendMessage() {
     })
     .catch(error => console.error("Error al enviar el mensaje:", error));
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("message-text");
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            sendMessage();
+        }
+    });
+});
