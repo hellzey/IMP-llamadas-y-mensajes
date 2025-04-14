@@ -194,3 +194,94 @@ body {
     color: white;
     align-self: flex-start;
 }
+
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.chat-item:hover {
+    background-color: #595478;
+}
+
+.friend-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#chat-box {
+    margin-left: 20px;
+}
+
+#message-input {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#message-text {
+    width: 80%;
+    padding: 10px;
+}
+
+
+/* Estilo general del modal */
+.modal {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: rgb(2, 1, 1);
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Estilos de los videos */
+video {
+    margin: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Estilos del chat */
+#chat-list {
+    padding: 10px;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}

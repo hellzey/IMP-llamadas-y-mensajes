@@ -9,16 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log('Peer abierto con ID:', id);
     });
 
-    // Responder llamada entrante
     peer.on('call', call => {
         navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             .then(stream => {
                 localStream = stream;
                 document.getElementById('local-video').srcObject = stream;
-                document.getElementById('video-container').style.display = 'block';
+
+                // Mostrar modal
+                const modal = document.getElementById('video-call-modal');
+                if (modal) modal.style.display = 'flex';
 
                 call.answer(stream);
-
                 call.on('stream', remoteStream => {
                     document.getElementById('remote-video').srcObject = remoteStream;
                 });
@@ -26,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentCall = call;
             })
             .catch(err => {
-                console.error("Error accediendo a la cámara o micrófono:", err);
+                console.error("Error al acceder a cámara o micrófono:", err);
             });
     });
 });
@@ -41,7 +42,9 @@ function startVideoCall() {
         .then(stream => {
             localStream = stream;
             document.getElementById('local-video').srcObject = stream;
-            document.getElementById('video-container').style.display = 'block';
+
+            const modal = document.getElementById('video-call-modal');
+            if (modal) modal.style.display = 'flex';
 
             const call = peer.call(currentChatId.toString(), stream);
             call.on('stream', remoteStream => {
@@ -51,7 +54,7 @@ function startVideoCall() {
             currentCall = call;
         })
         .catch(err => {
-            console.error("Error accediendo a la cámara o micrófono:", err);
+            console.error("Error al acceder a cámara o micrófono:", err);
         });
 }
 
@@ -66,5 +69,10 @@ function endCall() {
         localStream = null;
     }
 
-    document.getElementById('video-container').style.display = 'none';
+    const modal = document.getElementById('video-call-modal');
+    if (modal) modal.style.display = 'none';
+}
+
+function closeVideoCallModal() {
+    endCall(); // También corta la llamada si se cierra el modal manualmente
 }
