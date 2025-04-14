@@ -23,7 +23,6 @@
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    
     flex-wrap: nowrap; /* ⛔ NO permitir que se apilen a menos que sea en móvil */
 }
 
@@ -58,6 +57,7 @@
 /* Formularios y botones */
 form {
     margin-bottom: 20px;
+    background-color: #65678c;
 }
 
 select,
@@ -73,7 +73,7 @@ input[type="text"] {
 button {
     width: 100%;
     padding: 12px 20px;
-    background-color: #4CAF50;
+    background-color: #65678c;
     color: white;
     border: none;
     border-radius: 5px;
@@ -83,7 +83,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #555;
 }
 
 /* Listas de miembros y canales */
@@ -99,11 +99,12 @@ li {
     border-radius: 5px;
     font-size: 1.1em;
     color: #333;
+    cursor: pointer;
 }
 
 /* Estilo de publicaciones */
 #posts {
-    background-color: #fafafa;
+    background-color: #c7c7c7;
     padding: 20px;
     border-radius: 5px;
     font-size: 1.1em;
@@ -128,3 +129,53 @@ li {
         max-width: 100%;
     }
 }
+
+/* Modales */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #908599;
+    margin: 10% auto;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    color: #fdfdfd;
+}
+
+.close {
+    float: right;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#botones-acciones {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 10px;
+}
+
+
+#left-section li {
+    background-color: #65678c; /* Color de fondo para los elementos de la lista */
+    color: white;  /* Texto en blanco */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#left-section li:hover {
+    background-color: #555; /* Color de fondo cuando se pasa el ratón */
+}
+
