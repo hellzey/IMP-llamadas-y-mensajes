@@ -105,3 +105,12 @@ ALTER TABLE entregas
 ADD COLUMN archivo_pdf LONGBLOB,
 ADD COLUMN nombre_archivo VARCHAR(255);
 
+CREATE TABLE recompensas_usuario (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_usuario INT NOT NULL,
+  id_recompensa INT NOT NULL,
+  fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+  FOREIGN KEY (id_recompensa) REFERENCES imagenes(id)
+);
+  

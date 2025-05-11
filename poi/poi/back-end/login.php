@@ -6,13 +6,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-   
     $email = $conexion->real_escape_string($email);
     
-    // Preparar la consulta
-    $stmt = $conexion->prepare("SELECT id_usuario, nombre, correo, contra, foto_perfil, username, fecha_nacimiento FROM usuarios WHERE correo = ?");
+    // Preparar la consulta (agregamos el campo 'puntos')
+    $stmt = $conexion->prepare("SELECT id_usuario, nombre, correo, contra, foto_perfil, username, fecha_nacimiento, puntos FROM usuarios WHERE correo = ?");
     
-    // Verificar si la consulta se preparó correctamente
     if ($stmt === false) {
         die("Error en la preparación de la consulta: " . $conexion->error);
     }
@@ -22,30 +20,24 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $result = $stmt->get_result();
     
     if ($result->num_rows > 0) {
-        // Se encontró el usuario
         $row = $result->fetch_assoc();
         
-        // Comparación directa de contraseñas (sin hash)
         if ($password == $row['contra']) {
-            // Login exitoso
-            
             $_SESSION['id_usuario'] = $row['id_usuario'];
             $_SESSION['nombre'] = $row['nombre'];
             $_SESSION['correo'] = $row['correo'];
             $_SESSION['foto_perfil'] = !empty($row['foto_perfil']) ? base64_encode($row['foto_perfil']) : null;
             $_SESSION['username'] = $row['username'];
             $_SESSION['fecha_nacimiento'] = $row['fecha_nacimiento'];
+            $_SESSION['puntos'] = $row['puntos']; // <-- Aquí guardas los puntos
 
-            // Redirigir al perfil
             header("Location: ../perfil.php");
             exit();
         } else {
-            // Contraseña incorrecta
             header("Location: ../iniciose.php?error=1");
             exit();
         }
     } else {
-        // No se encontró el correo electrónico
         header("Location: ../iniciose.php?error=1");
         exit();
     }
