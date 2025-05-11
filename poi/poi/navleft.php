@@ -23,6 +23,9 @@ if (isset($_SESSION['id_usuario'])) {
         <a href="tareas.php"><span>Tareas</span><img src="media/tareas.png" alt="Tareas"></a>
         <a href="reward.php"><span>Reward</span><img src="media/reward.png" alt="Reward"></a>
         <a href="amigos.php"><span>Amigos</span><img src="media/amigo.png" alt="Amigos"></a>
+          <a href="chat_grupos.php"><span>chat grupales</span><img src="media/amigo.png" alt="Amigos"></a>
+        <!-- Add this link to your existing navleft.php file -->
+
     </div>
 
     <a href="perfil.php" class="navleft-profile">

@@ -114,3 +114,34 @@ CREATE TABLE recompensas_usuario (
   FOREIGN KEY (id_recompensa) REFERENCES imagenes(id)
 );
   
+  -- Table to store chat groups
+CREATE TABLE grupo_chat (
+  id_grupo_chat INT PRIMARY KEY AUTO_INCREMENT,
+  nombre_grupo VARCHAR(100) NOT NULL,
+  creador_id INT NOT NULL,
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (creador_id) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
+
+-- Table to store members of each chat group
+CREATE TABLE miembros_grupo_chat (
+  id_miembro INT PRIMARY KEY AUTO_INCREMENT,
+  id_grupo_chat INT NOT NULL,
+  id_usuario INT NOT NULL,
+  fecha_ingreso TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_grupo_chat) REFERENCES grupo_chat(id_grupo_chat) ON DELETE CASCADE,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE,
+  -- Ensure each user is only added once to each group
+  UNIQUE KEY unique_member (id_grupo_chat, id_usuario)
+);
+
+-- Table to store messages sent in group chats
+CREATE TABLE mensajes_grupo (
+  id_mensaje INT PRIMARY KEY AUTO_INCREMENT,
+  id_grupo_chat INT NOT NULL,
+  id_emisor INT NOT NULL,
+  contenido TEXT NOT NULL,
+  fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_grupo_chat) REFERENCES grupo_chat(id_grupo_chat) ON DELETE CASCADE,
+  FOREIGN KEY (id_emisor) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
