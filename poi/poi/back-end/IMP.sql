@@ -100,3 +100,8 @@ ADD FOREIGN KEY (id_canal) REFERENCES canales(id_canal) ON DELETE CASCADE;
 
 ALTER TABLE usuarios ADD COLUMN ultima_actividad DATETIME DEFAULT CURRENT_TIMESTAMP;
 
+
+ALTER TABLE entregas
+ADD COLUMN archivo_pdf LONGBLOB,
+ADD COLUMN nombre_archivo VARCHAR(255);
+
